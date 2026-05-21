@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { ReactNode, CSSProperties, ChangeEvent } from "react";
+import { translations, detectLanguage, type Language } from "../translations";
+import { LanguageToggle } from "./LanguageToggle";
 
-// ── Paste your Google Apps Script deployment URL here ─────────────────────────
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxhSKqMUugZbsHmFVb-S4lMd6VFgcSzVHBNIHH7TCZMDYCatFq3LUA71ZWU-vjSFfd2Gw/exec";
-// ──────────────────────────────────────────────────────────────────────────────
+// Load Google Apps Script URL from environment variable
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
 // Inject Google Fonts into <head> — works in Vite without any config
 function useFonts() {
@@ -391,13 +391,35 @@ export default function QyzUzatu() {
   useFonts();
   useAnimations();
 
+  // Language state with auto-detection and localStorage persistence
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('wedding-language');
+    return (saved as Language) || detectLanguage();
+  });
+
+  const toggleLanguage = () => {
+    const newLang: Language = language === 'en' ? 'kk' : 'en';
+    setLanguage(newLang);
+    localStorage.setItem('wedding-language', newLang);
+  };
+
+  const t = translations[language];
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    guests: "1 guest",
+    guests: t.guestOptions[0],
     note: "",
   });
   const [status, setStatus] = useState("idle");
+
+  // Update guest options when language changes
+  useEffect(() => {
+    setForm(prev => ({
+      ...prev,
+      guests: t.guestOptions[0]
+    }));
+  }, [language]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -422,7 +444,7 @@ export default function QyzUzatu() {
       });
 
       setStatus("success");
-      setForm({ name: "", phone: "", guests: "1 guest", note: "" });
+      setForm({ name: "", phone: "", guests: t.guestOptions[0], note: "" });
     } catch (_) {
       setStatus("success"); // no-cors always "fails"
     }
@@ -454,6 +476,14 @@ export default function QyzUzatu() {
         overflowX: "hidden",
       }}
     >
+      {/* Language Toggle */}
+      <LanguageToggle
+        currentLanguage={language}
+        onToggle={toggleLanguage}
+        colors={C}
+        fonts={F}
+      />
+
       {/* Paper texture */}
       <div
         style={{
@@ -558,7 +588,7 @@ export default function QyzUzatu() {
                 marginBottom: 10,
               }}
             >
-              You are warmly invited to
+              {t.warmlyInvited}
             </div>
 
             <p
@@ -571,7 +601,7 @@ export default function QyzUzatu() {
                 margin: "0 0 8px",
               }}
             >
-              a Kazakh farewell celebration
+              {t.kazakhCelebration}
             </p>
 
             <h1
@@ -592,7 +622,7 @@ export default function QyzUzatu() {
                 animation: "qyzShimmer 7s linear infinite",
               }}
             >
-              Qyz Uzatu
+              {t.qyzUzatu}
             </h1>
 
             <Divider my={18} />
@@ -607,7 +637,7 @@ export default function QyzUzatu() {
                 marginBottom: 10,
               }}
             >
-              in honour of
+              {t.inHonourOf}
             </div>
 
             <h2
@@ -620,7 +650,7 @@ export default function QyzUzatu() {
                 margin: "8px 0",
               }}
             >
-              Zeinura
+              {t.brideName}
             </h2>
 
             <Divider char="❧" my={18} />
@@ -635,16 +665,16 @@ export default function QyzUzatu() {
             >
               {[
                 {
-                  label: "Date",
-                  value: "31 · 07 · 2026",
-                  sub: "Friday Evening",
+                  label: t.dateLabel,
+                  value: t.dateValue,
+                  sub: t.dateSub,
                   muted: false,
                 },
                 {
-                  label: "Venue",
-                  value: "To be announced",
-                  sub: "Details to follow",
-                  muted: true,
+                  label: t.venueLabel,
+                  value: t.venueValue,
+                  sub: t.venueSub,
+                  muted: false,
                 },
               ].map((d) => (
                 <div key={d.label} style={{ textAlign: "center" }}>
@@ -748,7 +778,7 @@ export default function QyzUzatu() {
                 margin: "24px 0 0",
               }}
             >
-              About Qyz Uzatu
+              {t.aboutTitle}
             </h2>
           </div>
         </FadeUp>
@@ -770,10 +800,7 @@ export default function QyzUzatu() {
                 marginBottom: 20,
               }}
             >
-              "Qyz Uzatu" is an ancient Kazakh tradition — the joyful
-              sending-off of a daughter as she leaves her family home to begin a
-              new chapter of her life. It is a celebration of family bonds,
-              warmth, and new beginnings.
+              {t.aboutDescription}
             </p>
             <Divider char="❦" my={16} />
             <p
@@ -782,11 +809,10 @@ export default function QyzUzatu() {
                 fontSize: 13,
                 color: "rgba(107,125,90,0.65)",
                 lineHeight: 1.85,
+                whiteSpace: "pre-line",
               }}
             >
-              Your presence means the world to us.
-              <br />
-              Come celebrate, come rejoice.
+              {t.aboutClosing}
             </p>
           </div>
         </FadeUp>
@@ -810,18 +836,18 @@ export default function QyzUzatu() {
           }}
         >
           {[
-            { icon: "✦", label: "Date", value: "31 July 2026", sub: "Friday" },
+            { icon: "✦", label: t.dateLabel, value: t.dateValue, sub: t.dateSub },
             {
               icon: "◈",
-              label: "Time",
-              value: "Evening · 18:00",
-              sub: "Celebration begins",
+              label: t.timeLabel,
+              value: t.timeValue,
+              sub: t.timeSub,
             },
             {
               icon: "✿",
-              label: "Venue",
-              value: "To be announced",
-              sub: "Details to follow",
+              label: t.venueLabel,
+              value: t.venueValue,
+              sub: t.venueSub,
             },
           ].map((item, i) => (
             <FadeUp key={i} delay={i * 0.12}>
@@ -905,7 +931,7 @@ export default function QyzUzatu() {
                 margin: "24px 0 6px",
               }}
             >
-              Kindly RSVP
+              {t.rsvpTitle}
             </h2>
             <p
               style={{
@@ -915,7 +941,7 @@ export default function QyzUzatu() {
                 letterSpacing: "0.1em",
               }}
             >
-              Please confirm your attendance
+              {t.rsvpSubtitle}
             </p>
           </div>
         </FadeUp>
@@ -949,7 +975,7 @@ export default function QyzUzatu() {
                     marginBottom: 10,
                   }}
                 >
-                  Thank you!
+                  {t.thankYou}
                 </h3>
                 <p
                   style={{
@@ -957,36 +983,35 @@ export default function QyzUzatu() {
                     fontSize: 13,
                     color: "rgba(107,125,90,0.65)",
                     lineHeight: 1.85,
+                    whiteSpace: "pre-line",
                   }}
                 >
-                  We have received your RSVP.
-                  <br />
-                  We look forward to celebrating with you!
+                  {t.successMessage}
                 </p>
               </div>
             ) : (
               <div>
-                <FieldLabel>Full Name *</FieldLabel>
+                <FieldLabel>{t.fullNameLabel}</FieldLabel>
                 <input
                   className="qyz-input"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Your full name"
+                  placeholder={t.fullNamePlaceholder}
                   style={inputBase}
                 />
 
-                <FieldLabel>Phone Number *</FieldLabel>
+                <FieldLabel>{t.phoneLabel}</FieldLabel>
                 <input
                   className="qyz-input"
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  placeholder="+7 (___) ___ __ __"
+                  placeholder={t.phonePlaceholder}
                   style={inputBase}
                 />
 
-                <FieldLabel>Number of Guests</FieldLabel>
+                <FieldLabel>{t.guestsLabel}</FieldLabel>
                 <select
                   className="qyz-input"
                   name="guests"
@@ -1002,25 +1027,19 @@ export default function QyzUzatu() {
                     paddingRight: 36,
                   }}
                 >
-                  {[
-                    "1 guest",
-                    "2 guests",
-                    "3 guests",
-                    "4 guests",
-                    "5+ guests",
-                  ].map((v) => (
+                  {t.guestOptions.map((v) => (
                     <option key={v}>{v}</option>
                   ))}
                 </select>
 
-                <FieldLabel>Message / Wishes</FieldLabel>
+                <FieldLabel>{t.messageLabel}</FieldLabel>
                 <textarea
                   className="qyz-input"
                   name="note"
                   value={form.note}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Share a wish for Zeinura…"
+                  placeholder={t.messagePlaceholder}
                   style={{ ...inputBase, resize: "none" }}
                 />
 
@@ -1048,7 +1067,7 @@ export default function QyzUzatu() {
                       transition: "all 0.32s ease",
                     }}
                   >
-                    {status === "loading" ? "Sending…" : "Confirm Attendance"}
+                    {status === "loading" ? t.submitting : t.submitButton}
                   </button>
                 </div>
 
@@ -1061,7 +1080,7 @@ export default function QyzUzatu() {
                     marginTop: 12,
                   }}
                 >
-                  * required fields
+                  {t.requiredFields}
                 </p>
               </div>
             )}
@@ -1090,7 +1109,7 @@ export default function QyzUzatu() {
               marginBottom: 6,
             }}
           >
-            Zeinura
+            {t.brideName}
           </p>
           <p
             style={{
@@ -1101,7 +1120,7 @@ export default function QyzUzatu() {
               color: "rgba(107,125,90,0.33)",
             }}
           >
-            Qyz Uzatu · 31.07.2026
+            {t.footerDate}
           </p>
           <div
             style={{

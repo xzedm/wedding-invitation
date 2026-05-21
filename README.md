@@ -1,4 +1,41 @@
-# React + TypeScript + Vite
+# Qyz Uzatu Wedding Invitation
+
+A beautiful Kazakh wedding invitation website built with React + TypeScript + Vite.
+
+## Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory (copy from `.env.example`):
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Add your Google Apps Script deployment URL to `.env`:
+   ```
+   VITE_GOOGLE_SCRIPT_URL=your_google_script_deployment_url_here
+   ```
+
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Environment Variables
+
+- `VITE_GOOGLE_SCRIPT_URL` - Google Apps Script deployment URL for RSVP form submissions
+
+## Build
+
+```bash
+npm run build
+```
+
+## Original Vite Template Info
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
