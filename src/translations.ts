@@ -64,7 +64,7 @@ export const translations: Record<Language, Translations> = {
     venueValue: "Crystal",
     venueSub: "Saryagash, Kazakhstan",
     timeLabel: "Time",
-    timeValue: "Evening · 18:00",
+    timeValue: "Evening · 20:00",
     timeSub: "Celebration begins",
 
     // About Section
@@ -114,7 +114,7 @@ export const translations: Record<Language, Translations> = {
     venueValue: "Кристалл Рестораны",
     venueSub: "Сарыағаш қаласы",
     timeLabel: "Уақыты",
-    timeValue: "Кешкі · 18:00",
+    timeValue: "Кешкі · 20:00",
     timeSub: "Той басталады",
 
     // About Section
@@ -139,9 +139,9 @@ export const translations: Record<Language, Translations> = {
     requiredFields: "* міндетті өрістер",
 
     // Success Message
-    thankYou: "Рақмет сізге!",
+    thankYou: "Рақмет!",
     successMessage:
-      "Біз сіздің қатысуыңызды қабылдадық.\nСізбен бірге мерекелеуге асығамыз!",
+      "Біз сіздің қатысуыңызды қабылдадық.\nСізді асыға күтеміз!",
 
     // Footer
     footerDate: "Қыз Ұзату · 31.07.2026",
