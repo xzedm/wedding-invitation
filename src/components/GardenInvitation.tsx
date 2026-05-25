@@ -47,22 +47,22 @@ function useAnimations() {
         50%      { transform:translateY(6px); opacity:0.2; }
       }
       .qyz-input:focus {
-        border-color: rgba(107,125,90,0.65) !important;
+        border-color: rgba(60,130,50,0.65) !important;
         background:   rgba(255,255,255,0.82) !important;
-        box-shadow:   0 0 0 3px rgba(107,125,90,0.1) !important;
+        box-shadow:   0 0 0 3px rgba(60,130,50,0.1) !important;
         outline: none !important;
       }
-      .qyz-input::placeholder { color: rgba(107,125,90,0.38); }
+      .qyz-input::placeholder { color: rgba(60,130,50,0.38); }
       .qyz-btn:hover:not(:disabled) {
-        background: linear-gradient(135deg,#4a5e3a,#5a6e48) !important;
+        background: linear-gradient(135deg,#3d6b2a,#3f7a2e) !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 8px 32px rgba(90,110,72,0.38) !important;
+        box-shadow: 0 8px 32px rgba(50,120,40,0.38) !important;
       }
       .qyz-btn:active:not(:disabled) { transform: translateY(0) !important; }
       .qyz-btn:disabled { opacity:0.42 !important; cursor:not-allowed !important; }
       .qyz-det:hover {
         background: rgba(255,255,255,0.58) !important;
-        border-color: rgba(107,125,90,0.3) !important;
+        border-color: rgba(60,130,50,0.3) !important;
       }
     `;
     document.head.appendChild(style);
@@ -111,10 +111,10 @@ function FadeUp({ children, delay = 0, style: extraStyle = {} }: { children: Rea
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 const C = {
-  green: "#4a5e3a",
-  greenMid: "#6b7d5a",
-  greenLight: "rgba(107,125,90,0.55)",
-  greenFaint: "rgba(107,125,90,0.22)",
+  green: "#3d6b2a",
+  greenMid: "#4f8a3a",
+  greenLight: "rgba(60,130,50,0.6)",
+  greenFaint: "rgba(60,130,50,0.25)",
   cream: "#f4f0e8",
 };
 
@@ -128,9 +128,9 @@ const card = {
   background: "rgba(255,255,255,0.48)",
   backdropFilter: "blur(10px)",
   WebkitBackdropFilter: "blur(10px)",
-  border: "1px solid rgba(107,125,90,0.2)",
+  border: "1px solid rgba(60,130,50,0.2)",
   boxShadow:
-    "0 6px 48px rgba(107,125,90,0.08), inset 0 1px 0 rgba(255,255,255,0.55)",
+    "0 6px 48px rgba(60,130,50,0.08), inset 0 1px 0 rgba(255,255,255,0.55)",
 };
 
 // ── Small shared pieces ───────────────────────────────────────────────────────
@@ -139,7 +139,7 @@ function FieldLabel({ children }: { children: ReactNode }) {
     <div
       style={{
         fontFamily: F.body,
-        fontSize: 9,
+        fontSize: 13,
         letterSpacing: "0.22em",
         textTransform: "uppercase",
         color: C.greenLight,
@@ -166,10 +166,10 @@ function Divider({ char = "✿", my = 18 }) {
           flex: 1,
           height: 1,
           background:
-            "linear-gradient(90deg,transparent,rgba(107,125,90,0.28),transparent)",
+            "linear-gradient(90deg,transparent,rgba(60,130,50,0.28),transparent)",
         }}
       />
-      <span style={{ color: "rgba(107,125,90,0.4)", fontSize: 11 }}>
+      <span style={{ color: "rgba(60,130,50,0.4)", fontSize: 11 }}>
         {char}
       </span>
       <div
@@ -177,7 +177,7 @@ function Divider({ char = "✿", my = 18 }) {
           flex: 1,
           height: 1,
           background:
-            "linear-gradient(90deg,rgba(107,125,90,0.28),transparent)",
+            "linear-gradient(90deg,rgba(60,130,50,0.28),transparent)",
         }}
       />
     </div>
@@ -193,7 +193,7 @@ function BotanicalArch() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g opacity="0.52" stroke="#6B7D5A" strokeWidth="0.85">
+      <g opacity="0.52" stroke="#4f8a3a" strokeWidth="0.85">
         <path d="M55,100 Q50,78 40,60" strokeLinecap="round" />
         <path d="M40,60 Q26,45 12,36" />
         <path d="M40,60 Q44,42 42,22" />
@@ -204,7 +204,7 @@ function BotanicalArch() {
           rx="7"
           ry="3.5"
           transform="rotate(-20 12 35)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <ellipse
@@ -213,7 +213,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(10 42 21)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <ellipse
@@ -222,11 +222,11 @@ function BotanicalArch() {
           rx="6"
           ry="3"
           transform="rotate(-35 9 64)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
-        <circle cx="13" cy="34" r="2.2" fill="#C8B89A" opacity="0.7" />
-        <circle cx="43" cy="20" r="1.8" fill="#C8B89A" opacity="0.7" />
+        <circle cx="13" cy="34" r="2.2" fill="#d4a84a" opacity="0.7" />
+        <circle cx="43" cy="20" r="1.8" fill="#d4a84a" opacity="0.7" />
         <path d="M68,100 Q66,82 70,66 Q76,48 65,34" />
         <ellipse
           cx="65"
@@ -234,7 +234,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(15 65 33)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <path d="M80,100 Q84,82 77,62" />
@@ -244,7 +244,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(-22 75 60)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <path d="M44,100 Q42,80 44,62 Q46,48 40,36" strokeLinecap="round" />
@@ -253,7 +253,7 @@ function BotanicalArch() {
           cy="35"
           r="2.8"
           fill="none"
-          stroke="#6B7D5A"
+          stroke="#4f8a3a"
           strokeWidth="0.7"
         />
         {/* Right mirror */}
@@ -267,7 +267,7 @@ function BotanicalArch() {
           rx="7"
           ry="3.5"
           transform="rotate(20 388 35)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <ellipse
@@ -276,7 +276,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(-10 358 21)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <ellipse
@@ -285,11 +285,11 @@ function BotanicalArch() {
           rx="6"
           ry="3"
           transform="rotate(35 391 64)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
-        <circle cx="387" cy="34" r="2.2" fill="#C8B89A" opacity="0.7" />
-        <circle cx="357" cy="20" r="1.8" fill="#C8B89A" opacity="0.7" />
+        <circle cx="387" cy="34" r="2.2" fill="#d4a84a" opacity="0.7" />
+        <circle cx="357" cy="20" r="1.8" fill="#d4a84a" opacity="0.7" />
         <path d="M332,100 Q334,82 330,66 Q324,48 335,34" />
         <ellipse
           cx="335"
@@ -297,7 +297,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(-15 335 33)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <path d="M320,100 Q316,82 323,62" />
@@ -307,7 +307,7 @@ function BotanicalArch() {
           rx="5"
           ry="2.8"
           transform="rotate(22 325 60)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.5"
         />
         <path
@@ -319,7 +319,7 @@ function BotanicalArch() {
           cy="35"
           r="2.8"
           fill="none"
-          stroke="#6B7D5A"
+          stroke="#4f8a3a"
           strokeWidth="0.7"
         />
         {/* Arch + bow */}
@@ -327,21 +327,21 @@ function BotanicalArch() {
         <path d="M158,17 Q200,7 242,17" strokeWidth="0.6" opacity="0.5" />
         <path
           d="M193,11 Q187,6 182,8 Q185,13 193,11Z"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.65"
         />
         <path
           d="M207,11 Q213,6 218,8 Q215,13 207,11Z"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.65"
         />
-        <circle cx="200" cy="11" r="2" fill="#8B9D77" opacity="0.85" />
+        <circle cx="200" cy="11" r="2" fill="#5da848" opacity="0.85" />
         <path d="M148,14 Q122,32 118,60 Q115,80 124,100" />
         <path d="M252,14 Q278,32 282,60 Q285,80 276,100" />
-        <circle cx="122" cy="48" r="2.5" fill="none" stroke="#6B7D5A" />
-        <circle cx="278" cy="48" r="2.5" fill="none" stroke="#6B7D5A" />
-        <circle cx="126" cy="70" r="2" fill="none" stroke="#6B7D5A" />
-        <circle cx="274" cy="70" r="2" fill="none" stroke="#6B7D5A" />
+        <circle cx="122" cy="48" r="2.5" fill="none" stroke="#4f8a3a" />
+        <circle cx="278" cy="48" r="2.5" fill="none" stroke="#4f8a3a" />
+        <circle cx="126" cy="70" r="2" fill="none" stroke="#4f8a3a" />
+        <circle cx="274" cy="70" r="2" fill="none" stroke="#4f8a3a" />
       </g>
     </svg>
   );
@@ -355,21 +355,21 @@ function BotanicalMeadow() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g opacity="0.38" stroke="#6B7D5A" strokeWidth="0.85">
+      <g opacity="0.38" stroke="#4f8a3a" strokeWidth="0.85">
         <path d="M0,55 Q28,32 58,42 Q88,52 118,34 Q148,16 190,30" />
         <path d="M400,55 Q372,32 342,42 Q312,52 282,34 Q252,16 210,30" />
-        <circle cx="118" cy="32" r="3" fill="none" stroke="#6B7D5A" />
-        <circle cx="282" cy="32" r="3" fill="none" stroke="#6B7D5A" />
-        <circle cx="58" cy="40" r="2" fill="#C8B89A" opacity="0.55" />
-        <circle cx="342" cy="40" r="2" fill="#C8B89A" opacity="0.55" />
-        <circle cx="190" cy="28" r="3.5" fill="#C8B89A" opacity="0.55" />
+        <circle cx="118" cy="32" r="3" fill="none" stroke="#4f8a3a" />
+        <circle cx="282" cy="32" r="3" fill="none" stroke="#4f8a3a" />
+        <circle cx="58" cy="40" r="2" fill="#d4a84a" opacity="0.55" />
+        <circle cx="342" cy="40" r="2" fill="#d4a84a" opacity="0.55" />
+        <circle cx="190" cy="28" r="3.5" fill="#d4a84a" opacity="0.55" />
         <ellipse
           cx="155"
           cy="34"
           rx="5"
           ry="2.8"
           transform="rotate(-15 155 34)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.45"
         />
         <ellipse
@@ -378,7 +378,7 @@ function BotanicalMeadow() {
           rx="5"
           ry="2.8"
           transform="rotate(15 245 34)"
-          fill="#8B9D77"
+          fill="#5da848"
           opacity="0.45"
         />
       </g>
@@ -453,12 +453,12 @@ export default function QyzUzatu() {
 
   const inputBase: CSSProperties = {
     width: "100%",
-    padding: "11px 15px",
+    padding: "13px 15px",
     background: "rgba(255,255,255,0.58)",
-    border: "1px solid rgba(107,125,90,0.28)",
+    border: "1px solid rgba(60,130,50,0.28)",
     borderRadius: 3,
     fontFamily: F.body,
-    fontSize: 13,
+    fontSize: 16,
     color: C.green,
     marginBottom: 14,
     boxSizing: "border-box",
@@ -509,7 +509,7 @@ export default function QyzUzatu() {
           style={{
             position: "fixed",
             fontSize: 18,
-            color: "rgba(107,125,90,0.12)",
+            color: "rgba(60,130,50,0.12)",
             animation: `qyzFloat ${p.dur} ease-in-out infinite`,
             animationDelay: p.del,
             pointerEvents: "none",
@@ -544,7 +544,7 @@ export default function QyzUzatu() {
             top: 20,
             left: 20,
             fontSize: 22,
-            color: "rgba(107,125,90,0.18)",
+            color: "rgba(60,130,50,0.18)",
             userSelect: "none",
           }}
         >
@@ -556,7 +556,7 @@ export default function QyzUzatu() {
             top: 20,
             right: 20,
             fontSize: 22,
-            color: "rgba(107,125,90,0.18)",
+            color: "rgba(60,130,50,0.18)",
             userSelect: "none",
           }}
         >
@@ -581,7 +581,7 @@ export default function QyzUzatu() {
             <div
               style={{
                 fontFamily: F.body,
-                fontSize: 9,
+                fontSize: 14,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
                 color: C.greenLight,
@@ -596,8 +596,8 @@ export default function QyzUzatu() {
                 fontFamily: F.display,
                 fontStyle: "italic",
                 fontWeight: 300,
-                fontSize: "clamp(13px,3vw,16px)",
-                color: "#7a8a6a",
+                fontSize: "clamp(16px,3.5vw,20px)",
+                color: "#4a7a38",
                 margin: "0 0 8px",
               }}
             >
@@ -614,7 +614,7 @@ export default function QyzUzatu() {
                 letterSpacing: "-0.01em",
                 margin: "4px 0",
                 background:
-                  "linear-gradient(135deg,#4a5e3a 0%,#6b7d5a 40%,#8a9d70 60%,#4a5e3a 100%)",
+                  "linear-gradient(135deg,#3d6b2a 0%,#4f8a3a 40%,#5ea845 60%,#3d6b2a 100%)",
                 backgroundSize: "200% auto",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -630,7 +630,7 @@ export default function QyzUzatu() {
             <div
               style={{
                 fontFamily: F.body,
-                fontSize: 9,
+                fontSize: 14,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
                 color: C.greenLight,
@@ -681,7 +681,7 @@ export default function QyzUzatu() {
                   <div
                     style={{
                       fontFamily: F.body,
-                      fontSize: 9,
+                      fontSize: 13,
                       letterSpacing: "0.2em",
                       textTransform: "uppercase",
                       color: C.greenLight,
@@ -694,8 +694,8 @@ export default function QyzUzatu() {
                     style={{
                       fontFamily: F.display,
                       fontStyle: "italic",
-                      fontSize: d.muted ? 15 : 19,
-                      color: d.muted ? "rgba(107,125,90,0.5)" : C.green,
+                      fontSize: d.muted ? 20 : 24,
+                      color: d.muted ? "rgba(60,130,50,0.5)" : C.green,
                       margin: "0 0 4px",
                       fontWeight: 400,
                     }}
@@ -705,8 +705,8 @@ export default function QyzUzatu() {
                   <p
                     style={{
                       fontFamily: F.body,
-                      fontSize: 10,
-                      color: "rgba(107,125,90,0.45)",
+                      fontSize: 14,
+                      color: "rgba(60,130,50,0.45)",
                     }}
                   >
                     {d.sub}
@@ -736,10 +736,10 @@ export default function QyzUzatu() {
           <p
             style={{
               fontFamily: F.body,
-              fontSize: 8,
+              fontSize: 10,
               letterSpacing: "0.28em",
               textTransform: "uppercase",
-              color: "rgba(107,125,90,0.38)",
+              color: "rgba(60,130,50,0.38)",
             }}
           >
             Scroll
@@ -749,7 +749,7 @@ export default function QyzUzatu() {
               width: 1,
               height: 28,
               background:
-                "linear-gradient(to bottom,rgba(107,125,90,0.42),transparent)",
+                "linear-gradient(to bottom,rgba(60,130,50,0.42),transparent)",
             }}
           />
         </div>
@@ -773,7 +773,7 @@ export default function QyzUzatu() {
                 fontFamily: F.display,
                 fontStyle: "italic",
                 fontWeight: 300,
-                fontSize: "clamp(24px,6vw,38px)",
+                fontSize: "clamp(28px,7vw,42px)",
                 color: C.green,
                 margin: "24px 0 0",
               }}
@@ -794,8 +794,8 @@ export default function QyzUzatu() {
               style={{
                 fontFamily: F.prose,
                 fontStyle: "italic",
-                fontSize: "clamp(15px,3vw,18px)",
-                color: "#5a6a4a",
+                fontSize: "clamp(18px,3.5vw,22px)",
+                color: "#3a6a28",
                 lineHeight: 1.9,
                 marginBottom: 20,
               }}
@@ -806,8 +806,8 @@ export default function QyzUzatu() {
             <p
               style={{
                 fontFamily: F.body,
-                fontSize: 13,
-                color: "rgba(107,125,90,0.65)",
+                fontSize: 16,
+                color: "rgba(60,130,50,0.65)",
                 lineHeight: 1.85,
                 whiteSpace: "pre-line",
               }}
@@ -836,7 +836,12 @@ export default function QyzUzatu() {
           }}
         >
           {[
-            { icon: "✦", label: t.dateLabel, value: t.dateValue, sub: t.dateSub },
+            {
+              icon: "✦",
+              label: t.dateLabel,
+              value: t.dateValue,
+              sub: t.dateSub,
+            },
             {
               icon: "◈",
               label: t.timeLabel,
@@ -848,6 +853,12 @@ export default function QyzUzatu() {
               label: t.venueLabel,
               value: t.venueValue,
               sub: t.venueSub,
+            },
+            {
+              icon: "✿",
+              label: t.ownerLabel,
+              value: t.ownerValue,
+              sub: t.ownerSub,
             },
           ].map((item, i) => (
             <FadeUp key={i} delay={i * 0.12}>
@@ -863,7 +874,7 @@ export default function QyzUzatu() {
                 <div
                   style={{
                     fontSize: 20,
-                    color: "rgba(107,125,90,0.42)",
+                    color: "rgba(60,130,50,0.42)",
                     marginBottom: 10,
                   }}
                 >
@@ -872,7 +883,7 @@ export default function QyzUzatu() {
                 <div
                   style={{
                     fontFamily: F.body,
-                    fontSize: 9,
+                    fontSize: 13,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     color: C.greenLight,
@@ -885,7 +896,7 @@ export default function QyzUzatu() {
                   style={{
                     fontFamily: F.display,
                     fontStyle: "italic",
-                    fontSize: "clamp(15px,4vw,20px)",
+                    fontSize: "clamp(20px,5vw,26px)",
                     color: C.green,
                     fontWeight: 400,
                     margin: "0 0 4px",
@@ -896,8 +907,8 @@ export default function QyzUzatu() {
                 <p
                   style={{
                     fontFamily: F.body,
-                    fontSize: 10,
-                    color: "rgba(107,125,90,0.45)",
+                    fontSize: 14,
+                    color: "rgba(60,130,50,0.45)",
                   }}
                 >
                   {item.sub}
@@ -926,7 +937,7 @@ export default function QyzUzatu() {
                 fontFamily: F.display,
                 fontStyle: "italic",
                 fontWeight: 300,
-                fontSize: "clamp(26px,7vw,42px)",
+                fontSize: "clamp(30px,8vw,46px)",
                 color: C.green,
                 margin: "24px 0 6px",
               }}
@@ -936,8 +947,8 @@ export default function QyzUzatu() {
             <p
               style={{
                 fontFamily: F.body,
-                fontSize: 12,
-                color: "rgba(107,125,90,0.58)",
+                fontSize: 16,
+                color: "rgba(60,130,50,0.58)",
                 letterSpacing: "0.1em",
               }}
             >
@@ -959,7 +970,7 @@ export default function QyzUzatu() {
                 <div
                   style={{
                     fontSize: 34,
-                    color: "rgba(107,125,90,0.48)",
+                    color: "rgba(60,130,50,0.48)",
                     marginBottom: 14,
                   }}
                 >
@@ -970,7 +981,7 @@ export default function QyzUzatu() {
                     fontFamily: F.display,
                     fontStyle: "italic",
                     fontWeight: 400,
-                    fontSize: 28,
+                    fontSize: 32,
                     color: C.green,
                     marginBottom: 10,
                   }}
@@ -980,8 +991,8 @@ export default function QyzUzatu() {
                 <p
                   style={{
                     fontFamily: F.body,
-                    fontSize: 13,
-                    color: "rgba(107,125,90,0.65)",
+                    fontSize: 16,
+                    color: "rgba(60,130,50,0.65)",
                     lineHeight: 1.85,
                     whiteSpace: "pre-line",
                   }}
@@ -1053,17 +1064,17 @@ export default function QyzUzatu() {
                       !form.phone.trim()
                     }
                     style={{
-                      background: "linear-gradient(135deg,#5a6e48,#6b7d5a)",
+                      background: "linear-gradient(135deg,#3f7a2e,#4f8a3a)",
                       color: C.cream,
                       border: "none",
                       borderRadius: 3,
-                      padding: "13px 48px",
+                      padding: "14px 48px",
                       fontFamily: F.body,
-                      fontSize: 11,
+                      fontSize: 15,
                       letterSpacing: "2.5px",
                       textTransform: "uppercase",
                       cursor: "pointer",
-                      boxShadow: "0 4px 22px rgba(90,110,72,0.28)",
+                      boxShadow: "0 4px 22px rgba(50,120,40,0.28)",
                       transition: "all 0.32s ease",
                     }}
                   >
@@ -1075,8 +1086,8 @@ export default function QyzUzatu() {
                   style={{
                     textAlign: "center",
                     fontFamily: F.body,
-                    fontSize: 10,
-                    color: "rgba(107,125,90,0.36)",
+                    fontSize: 13,
+                    color: "rgba(60,130,50,0.36)",
                     marginTop: 12,
                   }}
                 >
@@ -1095,7 +1106,7 @@ export default function QyzUzatu() {
           zIndex: 1,
           textAlign: "center",
           padding: "40px 16px 60px",
-          borderTop: "1px solid rgba(107,125,90,0.1)",
+          borderTop: "1px solid rgba(60,130,50,0.1)",
         }}
       >
         <FadeUp>
@@ -1104,8 +1115,8 @@ export default function QyzUzatu() {
               fontFamily: F.display,
               fontStyle: "italic",
               fontWeight: 300,
-              fontSize: "clamp(18px,4vw,24px)",
-              color: "rgba(107,125,90,0.5)",
+              fontSize: "clamp(22px,5vw,28px)",
+              color: "rgba(60,130,50,0.5)",
               marginBottom: 6,
             }}
           >
@@ -1114,10 +1125,10 @@ export default function QyzUzatu() {
           <p
             style={{
               fontFamily: F.body,
-              fontSize: 9,
+              fontSize: 13,
               letterSpacing: "0.26em",
               textTransform: "uppercase",
-              color: "rgba(107,125,90,0.33)",
+              color: "rgba(60,130,50,0.33)",
             }}
           >
             {t.footerDate}
@@ -1125,7 +1136,7 @@ export default function QyzUzatu() {
           <div
             style={{
               fontSize: 14,
-              color: "rgba(107,125,90,0.18)",
+              color: "rgba(60,130,50,0.18)",
               marginTop: 20,
             }}
           >

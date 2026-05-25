@@ -18,6 +18,9 @@ export interface Translations {
   timeLabel: string;
   timeValue: string;
   timeSub: string;
+  ownerLabel: string;
+  ownerValue: string;
+  ownerSub: string;
 
   // About Section
   aboutTitle: string;
@@ -67,6 +70,11 @@ export const translations: Record<Language, Translations> = {
     timeValue: "Evening · 20:00",
     timeSub: "Celebration begins",
 
+    //
+    ownerLabel: "Hosted by",
+    ownerValue: "Zeinura's Parents",
+    ownerSub: "We invite you to share in our joy",
+
     // About Section
     aboutTitle: "About Qyz Uzatu",
     aboutDescription:
@@ -111,12 +119,16 @@ export const translations: Record<Language, Translations> = {
     dateValue: "31 · 07 · 2026",
     dateSub: "Жұма күні",
     venueLabel: "Орны",
-    venueValue: "Кристалл Рестораны",
+    venueValue: "Кристал Рестораны",
     venueSub: "Сарыағаш қаласы",
     timeLabel: "Уақыты",
     timeValue: "Кешкі · 20:00",
     timeSub: "Той басталады",
 
+    //
+    ownerLabel: "Той иелері",
+    ownerValue: "Бауыржан мен Рано",
+    ownerSub: "",
     // About Section
     aboutTitle: "Қыз Ұзату туралы",
     aboutDescription:
@@ -140,8 +152,7 @@ export const translations: Record<Language, Translations> = {
 
     // Success Message
     thankYou: "Рақмет!",
-    successMessage:
-      "Біз сіздің қатысуыңызды қабылдадық.\nСізді асыға күтеміз!",
+    successMessage: "Біз сіздің қатысуыңызды қабылдадық.\nСізді асыға күтеміз!",
 
     // Footer
     footerDate: "Қыз Ұзату · 31.07.2026",
